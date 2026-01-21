@@ -1,0 +1,16 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app.py .
+
+ENV MYSQL_HOST=mysql-service
+ENV MYSQL_USER=root
+ENV MYSQL_PASSWORD=secret  # Use secrets in production
+ENV MYSQL_DB=mydb
+ENV APP_VERSION=blue  # Set to 'blue' or 'green' during build
+
+CMD ["python", "app.py"]

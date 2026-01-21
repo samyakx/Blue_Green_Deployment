@@ -1,0 +1,1 @@
+# No variables needed for this simple setup; add as required.
